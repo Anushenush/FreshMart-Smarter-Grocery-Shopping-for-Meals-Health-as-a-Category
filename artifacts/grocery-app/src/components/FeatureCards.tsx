@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { featureCards } from "../data/products";
 import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
 
 const cardItems: Record<string, { emoji: string; price: number }[]> = {
   "recipe-to-cart": [
@@ -31,6 +32,7 @@ interface ModalData {
 
 export default function FeatureCards() {
   const { addItems } = useCart();
+  const { showToast } = useToast();
   const [modal, setModal] = useState<ModalData | null>(null);
   const [added, setAdded] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
@@ -55,6 +57,13 @@ export default function FeatureCards() {
       price: itemsData[i]?.price || 299,
     }));
     addItems(items);
+    showToast({
+      emoji: card.icon,
+      title: `${card.items.length} items added`,
+      source: card.title,
+      itemCount: card.items.length,
+      type: "bundle",
+    });
     setAdded(card.id);
     setModal(null);
     setTimeout(() => setAdded(null), 2000);

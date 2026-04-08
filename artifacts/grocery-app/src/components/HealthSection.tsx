@@ -2,9 +2,11 @@
 import { useState, useRef, useEffect } from "react";
 import { healthCategories, type HealthCategory } from "../data/health";
 import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
 
 export default function HealthSection() {
   const { addItems } = useCart();
+  const { showToast } = useToast();
   const [selected, setSelected] = useState<HealthCategory | null>(null);
   const [added, setAdded] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -28,6 +30,13 @@ export default function HealthSection() {
       price: item.price,
     }));
     addItems(items);
+    showToast({
+      emoji: cat.emoji,
+      title: `${cat.items.length} healthy items added`,
+      source: cat.name,
+      itemCount: cat.items.length,
+      type: "health",
+    });
     setAdded(true);
     setTimeout(() => {
       setAdded(false);

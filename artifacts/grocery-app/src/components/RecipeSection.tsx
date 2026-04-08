@@ -2,9 +2,11 @@
 import { useState, useRef, useEffect } from "react";
 import { recipes, recipeCategories, type Recipe } from "../data/recipes";
 import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
 
 export default function RecipeSection() {
   const { addItems } = useCart();
+  const { showToast } = useToast();
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Recipe | null>(null);
@@ -35,11 +37,18 @@ export default function RecipeSection() {
     const items = selected.ingredients.map((ing, i) => ({
       id: `${selected.id}-ing-${i}`,
       name: ing.name,
-      emoji: "🛒",
+      emoji: selected.emoji,
       quantity: ing.quantity,
       price: Math.round(ing.price * scale),
     }));
     addItems(items);
+    showToast({
+      emoji: selected.emoji,
+      title: `${selected.ingredients.length} ingredients added`,
+      source: `${selected.name} Recipe`,
+      itemCount: selected.ingredients.length,
+      type: "recipe",
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
