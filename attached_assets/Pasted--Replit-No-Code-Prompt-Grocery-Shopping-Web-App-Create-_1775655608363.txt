@@ -1,0 +1,246 @@
+# Replit No-Code Prompt: Grocery Shopping Web App
+
+Create a modern grocery shopping web application using only Bootstrap 5 for UI and layout. Do not use Tailwind CSS.
+
+## Theme and Style
+
+* Use a premium purple and red mixed gradient theme across the app.
+* Main colors: deep purple, violet, magenta, dark red, soft pink highlights.
+* Backgrounds should use subtle dark gradients with glowing purple-red cards.
+* Use glassmorphism effects, rounded corners, shadows, hover lift effects, glowing buttons, and animated gradients.
+* Add smooth animations like fade-in sections, slide-up cards, hover zoom on products, animated cart icon, floating badges, and smooth transitions.
+* Overall style should feel modern, futuristic, clean, premium, and mobile responsive.
+
+## Main Purpose
+
+Build a grocery shopping app focused mainly on these 2 core features:
+
+1. Recipe-to-Cart One-Click Integration
+2. Hyper-Personalized Health Filters
+
+## Homepage Sections
+
+### Hero Section
+
+* Large heading: “Smarter Grocery Shopping for Meals and Health”
+* Subheading explaining recipe-to-cart and health-based shopping.
+* Add 2 CTA buttons:
+
+  * “Explore Recipes”
+  * “Shop by Health Goals”
+* Add animated grocery illustrations, floating food icons, and glowing cart animation.
+
+### Feature Cards Section
+
+Show large Bootstrap cards for the main features:
+
+* Recipe-to-Cart
+* Personalized Health Shopping
+* Special Meals
+* Quick Weekly Essentials
+* Family Packs
+* Seasonal Grocery Bundles
+
+Each card should have:
+
+* Icon
+* Title
+* Small description
+* Hover animation
+* “View Items” button
+* On click, open a modal or expandable panel with all included items and automatically add those items into the cart.
+
+## Core Feature 1: Recipe-to-Cart One-Click Integration
+
+Create a dedicated section called “Cook by Recipe”.
+
+Add:
+
+* Search bar for meals
+* Meal categories like:
+
+  * Breakfast
+  * Lunch
+  * Dinner
+  * Snacks
+  * Healthy Meals
+  * Kids Meals
+  * Vegetarian
+  * High Protein
+  * South Indian
+  * North Indian
+  * International Meals
+
+When user selects a meal, instantly show:
+
+* Meal image
+* Servings selector (1 person, 2 people, 4 people, 6 people)
+* Cooking time
+* Difficulty level
+* Ingredients required with exact quantities
+* Nutritional summary
+* “Add Full Recipe to Cart” button
+
+Example meals:
+
+* Butter Chicken for 4 People
+* Biryani for Family
+* Dosa and Chutney Combo
+* Paneer Butter Masala
+* Chicken Fried Rice
+* Pasta Alfredo
+* Veg Sandwich
+* Idli Sambar
+* Pregnancy Nutrition Meal Pack
+* High Protein Gym Meal
+
+When user clicks “Add Full Recipe to Cart”:
+
+* Automatically add all ingredients with exact quantities to cart.
+* Show animation where ingredients fly into the cart.
+* Show success toast notification.
+* Cart updates live.
+
+## Core Feature 2: Hyper-Personalized Health Filters
+
+Create a dedicated section called “Shop by Health Goals”.
+
+Display Bootstrap cards in a responsive grid.
+
+Health categories should include:
+
+* Iron / Blood Increase
+* Vitamin D and Calcium
+* Pregnancy Nutrition
+* Diabetes Friendly
+* Weight Loss
+* Weight Gain
+* High Protein
+* Kids Nutrition
+* Senior Citizen Health
+* Immunity Boosting
+* Heart Healthy
+* Skin Glow Foods
+* Energy Boost Foods
+* Brain Health
+* Bone Strength
+* Thyroid Support
+* PCOS Friendly
+* Low Cholesterol
+* Fiber Rich Foods
+* Low Sugar Foods
+
+When user clicks a health card:
+
+* Open a detailed modal or side panel.
+* Show why these foods are recommended.
+* Show grocery items included.
+* Show benefits.
+* Show meal suggestions.
+* Automatically add recommended items into the cart.
+* Highlight “Added to Cart” animation.
+
+Example:
+
+### Vitamin D and Calcium
+
+Items added:
+
+* Milk
+* Eggs
+* Yogurt
+* Cheese
+* Salmon
+* Mushrooms
+* Almonds
+* Spinach
+
+### Pregnancy Nutrition
+
+Items added:
+
+* Folic Acid Rich Cereals
+* Milk
+* Fruits
+* Nuts
+* Vegetables
+* Eggs
+* Iron Rich Foods
+* Calcium Foods
+
+### Blood Increase / Iron Rich
+
+Items added:
+
+* Beetroot
+* Spinach
+* Dates
+* Pomegranate
+* Jaggery
+* Liver
+* Beans
+* Broccoli
+
+## Cart System
+
+* Floating cart icon in navbar.
+* Live item count.
+* Cart sidebar drawer opens from right.
+* Show item image, quantity, price, remove button.
+* Allow increase/decrease quantity.
+* Show subtotal, delivery fee, discount, and total.
+* Add checkout button with glowing style.
+
+## Extra Smart Features
+
+* AI meal suggestions based on health goal.
+* “You May Also Need” recommendations.
+* Related grocery bundles.
+* Recently viewed meals.
+* Favorite recipes.
+* Save health profiles.
+* Dark mode toggle.
+* Smart grocery reminders.
+* Weekly meal planner.
+* Budget-friendly grocery packs.
+* Voice search for meals and groceries.
+* Trending meals section.
+* Festival special grocery kits.
+* Combo discounts.
+
+## Navbar
+
+Include:
+
+* Logo
+* Home
+* Recipes
+* Health Goals
+* Categories
+* Offers
+* Cart
+* Profile
+* Search bar
+
+## Footer
+
+Include:
+
+* Quick links
+* About
+* Contact
+* Social media icons
+* Newsletter subscription
+* App download buttons
+
+## Technical Requirements
+
+* Use only Bootstrap 5.
+* Avoid Tailwind CSS completely.
+* Use Bootstrap grid, cards, modals, navbar, buttons, accordion, badges, and offcanvas cart.
+* Use CSS animations and JavaScript interactions.
+* Ensure mobile responsiveness.
+* Use reusable components.
+* Use clean spacing and visually rich design.
+* Use local sample grocery data and recipe data.
+* Create an attractive, professional, grocery-focused shopping experience mainly centered around recipe-to-cart and health-based grocery selection.

@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Grocery Shopping App"
+version = "1.0.0"
+id = "artifacts/grocery-app"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20428
+
+[services.development]
+run = "pnpm --filter @workspace/grocery-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/grocery-app", "run", "build" ]
+publicDir = "artifacts/grocery-app/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20428"
+BASE_PATH = "/"
