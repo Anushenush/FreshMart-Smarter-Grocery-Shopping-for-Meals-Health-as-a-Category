@@ -73,44 +73,101 @@ export default function HealthSection() {
         </div>
 
         <div className="row g-3">
-          {healthCategories.map((cat, i) => (
+          {healthCategories.map((cat, i) => {
+            const healthImageMap: Record<string, string> = {
+              "iron-blood":       "/images/health-iron-blood.png",
+              "vitamin-d-calcium":"/images/health-vitamin-d-calcium.png",
+              "pregnancy":        "/images/health-pregnancy.png",
+              "diabetes":         "/images/health-diabetes.png",
+              "weight-loss":      "/images/health-weight-loss.png",
+              "weight-gain":      "/images/health-weight-gain.png",
+              "high-protein":     "/images/health-high-protein.png",
+              "kids-nutrition":   "/images/health-kids-nutrition.png",
+              "senior-health":    "/images/health-senior-health.png",
+              "immunity":         "/images/health-immunity.png",
+              "heart-health":     "/images/health-food.png",
+              "skin-glow":        "/images/veggies.png",
+              "energy-boost":     "/images/health-food.png",
+              "brain-health":     "/images/health-food.png",
+              "pcos-friendly":    "/images/veggies.png",
+              "low-cholesterol":  "/images/veggies.png",
+            };
+            const imgSrc = healthImageMap[cat.id] ?? "/images/health-food.png";
+            return (
             <div key={cat.id} className="col-6 col-md-4 col-lg-3 col-xl-2" style={{ opacity: visible ? 1 : 0, transform: visible ? "scale(1)" : "scale(0.9)", transition: `all 0.4s ease ${i * 0.04}s` }}>
               <div
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: `1px solid ${cat.color}40`,
+                  background: "rgba(14,4,30,0.92)",
+                  border: `1.5px solid ${cat.color}55`,
                   borderRadius: "18px",
-                  padding: "1.4rem 1rem",
                   cursor: "pointer",
                   transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
-                  textAlign: "center",
-                  position: "relative",
                   overflow: "hidden",
                   height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  boxShadow: `0 4px 20px ${cat.color}22`,
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(-6px) scale(1.03)";
-                  el.style.borderColor = cat.color + "80";
-                  el.style.boxShadow = `0 15px 40px ${cat.color}30`;
-                  el.style.background = cat.color + "18";
+                  el.style.borderColor = cat.color + "cc";
+                  el.style.boxShadow = `0 16px 44px ${cat.color}44`;
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(0) scale(1)";
-                  el.style.borderColor = cat.color + "40";
-                  el.style.boxShadow = "none";
-                  el.style.background = "rgba(255,255,255,0.04)";
+                  el.style.borderColor = cat.color + "55";
+                  el.style.boxShadow = `0 4px 20px ${cat.color}22`;
                 }}
                 onClick={() => { setSelected(cat); setAdded(false); }}
               >
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg, ${cat.color}, transparent)` }} />
-                <div style={{ fontSize: "2.2rem", marginBottom: "0.6rem", filter: `drop-shadow(0 0 8px ${cat.color}60)` }}>{cat.emoji}</div>
-                <div style={{ color: "#fff", fontWeight: 600, fontSize: "0.82rem", lineHeight: 1.3 }}>{cat.name}</div>
-                <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.68rem", marginTop: "0.3rem" }}>{cat.items.length} items</div>
+                {/* Food Image */}
+                <div style={{ position: "relative", height: "clamp(80px,9vw,110px)", overflow: "hidden", flexShrink: 0 }}>
+                  <img src={imgSrc} alt={cat.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <div style={{ position: "absolute", inset: 0, background: `linear-gradient(0deg, rgba(14,4,30,1) 0%, rgba(14,4,30,0.35) 60%, transparent 100%)` }} />
+                  <div style={{ position: "absolute", top: "7px", left: "9px", fontSize: "1.4rem", filter: `drop-shadow(0 0 8px ${cat.color}90)` }}>{cat.emoji}</div>
+                </div>
+
+                {/* Card body */}
+                <div style={{ padding: "0.65rem 0.75rem 0.8rem", display: "flex", flexDirection: "column", flex: 1, textAlign: "center" }}>
+                  {/* Name */}
+                  <div style={{ color: "#fff", fontWeight: 700, fontSize: "clamp(0.72rem,1.3vw,0.82rem)", lineHeight: 1.3, marginBottom: "0.55rem" }}>{cat.name}</div>
+
+                  {/* ── NEON ITEMS BADGE ── */}
+                  <div style={{
+                    background: `${cat.color}18`,
+                    border: `1.5px solid ${cat.color}55`,
+                    borderRadius: "10px",
+                    padding: "0.4rem 0.5rem",
+                    marginTop: "auto",
+                  }}>
+                    <span style={{
+                      fontWeight: 900,
+                      fontSize: "clamp(1.05rem,2vw,1.3rem)",
+                      color: cat.color,
+                      textShadow: `0 0 8px ${cat.color}, 0 0 20px ${cat.color}bb, 0 0 38px ${cat.color}55`,
+                      display: "block",
+                      lineHeight: 1,
+                    }}>
+                      {cat.items.length}
+                    </span>
+                    <span style={{
+                      fontWeight: 800,
+                      fontSize: "clamp(0.58rem,1.1vw,0.66rem)",
+                      color: cat.color,
+                      textShadow: `0 0 6px ${cat.color}aa`,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                    }}>
+                      Items
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

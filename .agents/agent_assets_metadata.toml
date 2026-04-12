@@ -36,3 +36,63 @@ id = "Ymhlg0IsG1xfkV6KKpQrn"
 uri = "file://artifacts/grocery-app/public/images/grocery-basket.png"
 type = "image"
 title = "premium grocery basket"
+
+[[generated]]
+id = "XJfsCpeFy2zTqMvpTjRyO"
+uri = "file://artifacts/grocery-app/public/images/health-iron-blood.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "oZtffxDqNLjqbLsTc4Vhg"
+uri = "file://artifacts/grocery-app/public/images/health-vitamin-d-calcium.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "YX8G9y_ykwyU2acBhnwu-"
+uri = "file://artifacts/grocery-app/public/images/health-pregnancy.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2NBVkKxXG9E15p_Ktbsub"
+uri = "file://artifacts/grocery-app/public/images/health-diabetes.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "RLpR2OhY6qB7Zbx4mzOlj"
+uri = "file://artifacts/grocery-app/public/images/health-weight-loss.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "E0p-SJg_UNWPrg-aHADtZ"
+uri = "file://artifacts/grocery-app/public/images/health-weight-gain.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Dr9VntP2K5pE0XlexfCix"
+uri = "file://artifacts/grocery-app/public/images/health-high-protein.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "iKs-BLU-qWUES3Wcx29NE"
+uri = "file://artifacts/grocery-app/public/images/health-kids-nutrition.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "1yKVPRf_xFPLZT0q9k8Ng"
+uri = "file://artifacts/grocery-app/public/images/health-senior-health.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "VPe38qSoRRolbooyTGp5W"
+uri = "file://artifacts/grocery-app/public/images/health-immunity.png"
+type = "image"
+title = "generated_image"
