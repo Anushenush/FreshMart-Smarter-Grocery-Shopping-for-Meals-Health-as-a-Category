@@ -163,28 +163,42 @@ export default function RecipeSection() {
         <div className="row g-3 g-md-4">
           {filtered.map((recipe, i) => {
             const cardThemes = [
-              { grad: "linear-gradient(135deg,rgba(124,58,237,0.35) 0%,rgba(219,39,119,0.25) 100%)", border: "rgba(192,132,252,0.5)", glow: "rgba(124,58,237,0.5)", accent: "#c084fc", accentBg: "rgba(192,132,252,0.15)" },
-              { grad: "linear-gradient(135deg,rgba(219,39,119,0.35) 0%,rgba(251,146,60,0.25) 100%)", border: "rgba(244,114,182,0.5)", glow: "rgba(219,39,119,0.5)", accent: "#fb923c", accentBg: "rgba(251,146,60,0.15)" },
-              { grad: "linear-gradient(135deg,rgba(6,182,212,0.3) 0%,rgba(124,58,237,0.3) 100%)", border: "rgba(34,211,238,0.5)", glow: "rgba(6,182,212,0.5)", accent: "#22d3ee", accentBg: "rgba(6,182,212,0.15)" },
-              { grad: "linear-gradient(135deg,rgba(16,185,129,0.3) 0%,rgba(6,182,212,0.3) 100%)", border: "rgba(52,211,153,0.5)", glow: "rgba(16,185,129,0.5)", accent: "#34d399", accentBg: "rgba(52,211,153,0.15)" },
+              { border: "rgba(192,132,252,0.55)", glow: "rgba(124,58,237,0.6)", accent: "#c084fc", ingGlow: "#e879f9" },
+              { border: "rgba(244,114,182,0.55)", glow: "rgba(219,39,119,0.6)", accent: "#fb923c", ingGlow: "#f472b6" },
+              { border: "rgba(34,211,238,0.55)",  glow: "rgba(6,182,212,0.6)",   accent: "#22d3ee", ingGlow: "#22d3ee" },
+              { border: "rgba(52,211,153,0.55)",  glow: "rgba(16,185,129,0.6)",  accent: "#34d399", ingGlow: "#34d399" },
             ];
             const theme = cardThemes[i % cardThemes.length];
             const totalIngCost = recipe.ingredients.reduce((s, ing) => s + ing.price, 0);
+
+            const imageMap: Record<string, string> = {
+              "butter-chicken":       "/images/butter-chicken.png",
+              "biryani":              "/images/biryani.png",
+              "dosa-chutney":         "/images/food-spread.png",
+              "paneer-butter-masala": "/images/food-spread.png",
+              "chicken-fried-rice":   "/images/food-spread.png",
+              "pasta-alfredo":        "/images/food-spread.png",
+              "veg-sandwich":         "/images/veggies.png",
+              "idli-sambar":          "/images/food-spread.png",
+              "pregnancy-meal":       "/images/health-food.png",
+              "high-protein-gym":     "/images/health-food.png",
+              "kids-meal":            "/images/grocery-basket.png",
+              "avocado-toast":        "/images/veggies.png",
+            };
+            const imgSrc = imageMap[recipe.id] ?? "/images/food-spread.png";
+
             return (
             <div key={recipe.id} className="col-6 col-sm-4 col-md-4 col-lg-3" style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transition: `all 0.5s ease ${i * 0.05}s` }}>
               <div
                 style={{
-                  background: theme.grad,
+                  background: "rgba(14,4,30,0.92)",
                   border: `1.5px solid ${theme.border}`,
                   borderRadius: "22px",
-                  padding: "clamp(1rem,2vw,1.5rem)",
                   cursor: "pointer",
                   transition: "all 0.35s cubic-bezier(0.4,0,0.2,1)",
                   height: "100%",
-                  textAlign: "center",
                   backdropFilter: "blur(16px)",
-                  boxShadow: `0 4px 24px ${theme.glow}55, inset 0 1px 0 rgba(255,255,255,0.08)`,
-                  position: "relative",
+                  boxShadow: `0 4px 24px ${theme.glow}44`,
                   overflow: "hidden",
                   display: "flex",
                   flexDirection: "column",
@@ -192,41 +206,78 @@ export default function RecipeSection() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(-8px) scale(1.02)";
-                  el.style.boxShadow = `0 20px 50px ${theme.glow}88, inset 0 1px 0 rgba(255,255,255,0.12)`;
-                  el.style.borderColor = theme.border.replace("0.5", "0.9");
+                  el.style.boxShadow = `0 20px 50px ${theme.glow}88`;
+                  el.style.borderColor = theme.border.replace("0.55", "1");
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(0) scale(1)";
-                  el.style.boxShadow = `0 4px 24px ${theme.glow}55, inset 0 1px 0 rgba(255,255,255,0.08)`;
+                  el.style.boxShadow = `0 4px 24px ${theme.glow}44`;
                   el.style.borderColor = theme.border;
                 }}
                 onClick={() => { setSelected(recipe); setServings(recipe.servings); setAdded(false); }}
               >
-                {/* Shimmer top stripe */}
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg, transparent, ${theme.accent}, transparent)`, opacity: 0.9 }} />
-
-                {/* Emoji */}
-                <div style={{ fontSize: "clamp(2.8rem,5.5vw,3.8rem)", marginBottom: "0.7rem", marginTop: "0.6rem", filter: `drop-shadow(0 0 16px ${theme.glow}) drop-shadow(0 0 30px ${theme.glow}66)`, lineHeight: 1 }}>{recipe.emoji}</div>
-
-                {/* Name */}
-                <h6 style={{ color: "#fff", fontWeight: 800, fontSize: "clamp(0.82rem,1.5vw,1rem)", marginBottom: "0.5rem", lineHeight: 1.25, textShadow: "0 0 20px rgba(255,255,255,0.2)", flex: 1 }}>{recipe.name}</h6>
-
-                {/* Tags */}
-                <div style={{ display: "flex", justifyContent: "center", gap: "0.35rem", flexWrap: "wrap", marginBottom: "0.7rem" }}>
-                  <span style={{ background: theme.accentBg, border: `1px solid ${theme.border}`, borderRadius: "20px", padding: "3px 10px", fontSize: "0.66rem", color: theme.accent, fontWeight: 600 }}>⏱ {recipe.cookingTime}</span>
-                  <span style={{ background: "rgba(255,255,255,0.07)", borderRadius: "20px", padding: "3px 10px", fontSize: "0.66rem", color: "rgba(255,255,255,0.6)", fontWeight: 500 }}>🍴 {recipe.servings}</span>
+                {/* Food Image */}
+                <div style={{ position: "relative", height: "clamp(110px,13vw,150px)", overflow: "hidden", flexShrink: 0 }}>
+                  <img
+                    src={imgSrc}
+                    alt={recipe.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                  {/* Dark overlay + emoji overlay */}
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(14,4,30,1) 0%, rgba(14,4,30,0.4) 60%, transparent 100%)" }} />
+                  <div style={{ position: "absolute", top: "8px", left: "10px", fontSize: "1.6rem", filter: `drop-shadow(0 0 10px ${theme.glow})` }}>{recipe.emoji}</div>
+                  {/* Cook time badge */}
+                  <div style={{ position: "absolute", top: "8px", right: "10px", background: "rgba(0,0,0,0.65)", border: `1px solid ${theme.border}`, borderRadius: "8px", padding: "2px 7px", fontSize: "0.62rem", color: theme.accent, fontWeight: 700 }}>⏱ {recipe.cookingTime}</div>
                 </div>
 
-                {/* Ingredient count + cost row */}
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(0,0,0,0.2)", borderRadius: "12px", padding: "6px 12px", marginBottom: "0.65rem" }}>
-                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.7rem" }}>🧾 {recipe.ingredients.length} items</span>
-                  <span style={{ color: theme.accent, fontWeight: 800, fontSize: "0.8rem", textShadow: `0 0 8px ${theme.glow}` }}>₹{totalIngCost}</span>
-                </div>
+                {/* Card body */}
+                <div style={{ padding: "0.75rem 0.9rem 0.85rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                  {/* Recipe name */}
+                  <div style={{ color: "#fff", fontWeight: 800, fontSize: "clamp(0.82rem,1.5vw,0.95rem)", lineHeight: 1.25, marginBottom: "0.6rem" }}>{recipe.name}</div>
 
-                {/* CTA */}
-                <div style={{ background: "linear-gradient(135deg,#7c3aed,#db2777)", borderRadius: "12px", padding: "8px", color: "#fff", fontSize: "0.78rem", fontWeight: 800, letterSpacing: "0.02em", boxShadow: `0 0 16px ${theme.glow}88` }}>
-                  🛒 Add to Cart
+                  {/* ── NEON INGREDIENTS BADGE — the unique hero ── */}
+                  <div style={{
+                    background: `linear-gradient(135deg, ${theme.glow.replace("0.6","0.18")}, ${theme.glow.replace("0.6","0.08")})`,
+                    border: `1.5px solid ${theme.border}`,
+                    borderRadius: "12px",
+                    padding: "0.5rem 0.7rem",
+                    marginBottom: "0.6rem",
+                    textAlign: "center",
+                  }}>
+                    <span style={{
+                      fontWeight: 900,
+                      fontSize: "clamp(1.1rem,2.2vw,1.35rem)",
+                      color: theme.ingGlow,
+                      textShadow: `0 0 10px ${theme.ingGlow}, 0 0 22px ${theme.ingGlow}aa, 0 0 40px ${theme.ingGlow}55`,
+                      letterSpacing: "-0.01em",
+                      display: "block",
+                      lineHeight: 1,
+                    }}>
+                      {recipe.ingredients.length}
+                    </span>
+                    <span style={{
+                      fontWeight: 800,
+                      fontSize: "clamp(0.62rem,1.2vw,0.72rem)",
+                      color: theme.ingGlow,
+                      textShadow: `0 0 8px ${theme.ingGlow}, 0 0 16px ${theme.ingGlow}88`,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}>
+                      Ingredients
+                    </span>
+                  </div>
+
+                  {/* Price + servings row */}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.65rem", marginTop: "auto" }}>
+                    <span style={{ color: theme.accent, fontWeight: 900, fontSize: "clamp(0.9rem,1.8vw,1.05rem)", textShadow: `0 0 10px ${theme.glow}` }}>₹{totalIngCost}</span>
+                    <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.68rem" }}>🍴 {recipe.servings} servings</span>
+                  </div>
+
+                  {/* CTA */}
+                  <div style={{ background: "linear-gradient(135deg,#7c3aed,#db2777)", borderRadius: "12px", padding: "8px", color: "#fff", fontSize: "0.78rem", fontWeight: 800, textAlign: "center", boxShadow: `0 0 16px ${theme.glow}66` }}>
+                    🛒 Add to Cart
+                  </div>
                 </div>
               </div>
             </div>
