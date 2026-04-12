@@ -206,13 +206,8 @@ export default function RecipeSection() {
                 {/* Shimmer top stripe */}
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg, transparent, ${theme.accent}, transparent)`, opacity: 0.9 }} />
 
-                {/* Difficulty badge */}
-                <div style={{ position: "absolute", top: "10px", right: "10px", background: theme.accentBg, border: `1px solid ${theme.border}`, borderRadius: "8px", padding: "2px 8px", fontSize: "0.62rem", color: theme.accent, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  {recipe.difficulty.toUpperCase()}
-                </div>
-
                 {/* Emoji */}
-                <div style={{ fontSize: "clamp(2.8rem,5.5vw,3.8rem)", marginBottom: "0.7rem", marginTop: "0.3rem", filter: `drop-shadow(0 0 16px ${theme.glow}) drop-shadow(0 0 30px ${theme.glow}66)`, lineHeight: 1 }}>{recipe.emoji}</div>
+                <div style={{ fontSize: "clamp(2.8rem,5.5vw,3.8rem)", marginBottom: "0.7rem", marginTop: "0.6rem", filter: `drop-shadow(0 0 16px ${theme.glow}) drop-shadow(0 0 30px ${theme.glow}66)`, lineHeight: 1 }}>{recipe.emoji}</div>
 
                 {/* Name */}
                 <h6 style={{ color: "#fff", fontWeight: 800, fontSize: "clamp(0.82rem,1.5vw,1rem)", marginBottom: "0.5rem", lineHeight: 1.25, textShadow: "0 0 20px rgba(255,255,255,0.2)", flex: 1 }}>{recipe.name}</h6>
@@ -230,8 +225,8 @@ export default function RecipeSection() {
                 </div>
 
                 {/* CTA */}
-                <div style={{ background: `linear-gradient(135deg, ${theme.glow.replace("0.5","0.3")}, ${theme.glow.replace("0.5","0.15")})`, border: `1px solid ${theme.border}`, borderRadius: "12px", padding: "7px", color: theme.accent, fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.03em" }}>
-                  👁 View Recipe & Add to Cart
+                <div style={{ background: "linear-gradient(135deg,#7c3aed,#db2777)", borderRadius: "12px", padding: "8px", color: "#fff", fontSize: "0.78rem", fontWeight: 800, letterSpacing: "0.02em", boxShadow: `0 0 16px ${theme.glow}88` }}>
+                  🛒 Add to Cart
                 </div>
               </div>
             </div>
@@ -370,11 +365,23 @@ export default function RecipeSection() {
                     </div>
                   </div>
 
-                  <div style={{ color: "#fff", fontWeight: 800, fontSize: "clamp(0.9rem,2vw,1.1rem)", marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <span style={{ background: "linear-gradient(135deg,#c084fc,#f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", textShadow: "none" }}>
-                      🧾 All {selected.ingredients.length} Ingredients
-                    </span>
-                    <span style={{ color: "rgba(255,255,255,0.35)", fontWeight: 400, fontSize: "0.82rem" }}>for {servings} {servings === 1 ? "person" : "people"}</span>
+                  <div style={{ marginBottom: "1.1rem" }}>
+                    <div style={{
+                      fontWeight: 900,
+                      fontSize: "clamp(1.3rem,3vw,1.7rem)",
+                      letterSpacing: "-0.01em",
+                      lineHeight: 1.1,
+                      background: "linear-gradient(135deg, #e879f9, #c084fc, #f472b6)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      filter: "drop-shadow(0 0 12px rgba(192,132,252,0.8)) drop-shadow(0 0 28px rgba(244,114,182,0.5))",
+                      display: "inline-block",
+                    }}>
+                      🧾 {selected.ingredients.length} Ingredients
+                    </div>
+                    <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.82rem", marginTop: "2px" }}>
+                      for {servings} {servings === 1 ? "person" : "people"}
+                    </div>
                   </div>
 
                   {/* Neon Ingredients Grid — 2 columns, large cards */}

@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "9OEEacK5w1LSsDbcH6AJF"
+uri = "file://artifacts/grocery-app/public/images/food-spread.png"
+type = "image"
+title = "Indian food spread dark moody"
+
+[[generated]]
+id = "Iv1E5ErUixhQ5HVpI8jy4"
+uri = "file://artifacts/grocery-app/public/images/veggies.png"
+type = "image"
+title = "fresh vegetables neon dark"
+
+[[generated]]
+id = "grUwYq2axNfbr2RM2zVtg"
+uri = "file://artifacts/grocery-app/public/images/health-food.png"
+type = "image"
+title = "health wellness food flatlay"
+
+[[generated]]
+id = "SDCPv3dY8nk6sn-QD6gCO"
+uri = "file://artifacts/grocery-app/public/images/butter-chicken.png"
+type = "image"
+title = "butter chicken curry bowl"
+
+[[generated]]
+id = "inBMBROyOr04opEOCpNFN"
+uri = "file://artifacts/grocery-app/public/images/biryani.png"
+type = "image"
+title = "biryani copper pot"
+
+[[generated]]
+id = "Ymhlg0IsG1xfkV6KKpQrn"
+uri = "file://artifacts/grocery-app/public/images/grocery-basket.png"
+type = "image"
+title = "premium grocery basket"

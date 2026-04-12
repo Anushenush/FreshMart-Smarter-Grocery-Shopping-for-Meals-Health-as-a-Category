@@ -88,6 +88,16 @@ body {
   50% { box-shadow: 0 0 40px rgba(124,58,237,0.8), 0 0 60px rgba(219,39,119,0.4); }
 }
 
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes scrollRight {
+  0%   { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
 /* =========================================
    SCROLLBAR
    ========================================= */

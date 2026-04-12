@@ -11,6 +11,7 @@ import FeaturedProducts from "./components/FeaturedProducts";
 import CartDrawer from "./components/CartDrawer";
 import CartToast from "./components/CartToast";
 import Footer from "./components/Footer";
+import PromoScroll from "./components/PromoScroll";
 
 function AppContent() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -34,6 +35,7 @@ function AppContent() {
         onExploreRecipes={() => scrollTo("recipes")}
         onHealthGoals={() => scrollTo("health")}
       />
+      <PromoScroll />
       <FeatureCards />
       <RecipeSection />
       <HealthSection />
